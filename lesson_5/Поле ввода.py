@@ -5,17 +5,23 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.by import By
 from time import sleep
-browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-# browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+chrome = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+firefox = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 
 try:
- browser.get("http://the-internet.herokuapp.com/inputs")
- input = browser.find_element(By.TAG_NAME, "input")
- input.send_keys(1000)
- input.clear()
- input.send_keys(999)
+ chrome.get("http://the-internet.herokuapp.com/inputs")
+ firefox.get("http://the-internet.herokuapp.com/inputs")
+ inputC = chrome.find_element(By.TAG_NAME, "input")
+ inputC.send_keys(1000)
+ InputF = firefox.find_element(By.TAG_NAME, "input")
+ InputF.send_keys(1000)
+ inputC.clear()
+ InputF.clear()
+ inputC.send_keys(999)
+ InputF.send_keys(999)
 
 except Exception as ex:
  print(ex)
 finally:
- browser.quit()
+ chrome.quit()
+ firefox.quit()
