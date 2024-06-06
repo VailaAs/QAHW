@@ -5,15 +5,18 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.by import By
 from time import sleep
-browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-# browser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+chrome = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+firefox = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
 
 try:
- browser.get("http://the-internet.herokuapp.com/entry_ad")
+ chrome.get("http://the-internet.herokuapp.com/entry_ad")
+ firefox.get("http://the-internet.herokuapp.com/entry_ad")
  sleep(5)
- browser.find_element(By.CSS_SELECTOR, '.modal-footer').click()
+ chrome.find_element(By.CSS_SELECTOR, '.modal-footer').click()
+ firefox.find_element(By.CSS_SELECTOR, '.modal-footer').click()
 
 except Exception as ex:
  print(ex)
 finally:
- browser.quit()
+ chrome.quit()
+ firefox.quit()
