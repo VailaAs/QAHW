@@ -1,6 +1,4 @@
 from configuration import *
-from time import sleep
-import re
 
 
 class AuthorizationPage:
@@ -39,7 +37,6 @@ class CartPage:
         self.driver.find_element(By.ID, 'postal-code').send_keys(postcode)
         self.driver.find_element(By.ID, 'continue').click()
 
-    def check_total_sum(self):
-        total_element = self.driver.find_element(By.CSS_SELECTOR, '[class="summary_total_label"]')
-        total_text = total_element.text
-        print(total_text)
+    def check_total_sum(self, to_be_res):
+        total_element = self.driver.find_element(By.CSS_SELECTOR, '[data-test="total-label"]')
+        return total_element.get_attribute('innerText')

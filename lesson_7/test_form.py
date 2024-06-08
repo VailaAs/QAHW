@@ -1,6 +1,5 @@
 from configuration import *
 from form_pages import MainPage
-from time import sleep
 
 
 def test_form(driver):

@@ -12,5 +12,8 @@ def test_shop(driver):
                             'add-to-cart-sauce-labs-onesie'])
 
     cart_page = CartPage(driver)
-    cart_page.checkout_form('Alla', 'Sky', 123456)
-    cart_page.check_total_sum()
+    cart_page.checkout_form('Alla', 'Sky', 123456) 
+    
+    to_be_result = 58.29
+    as_is_result = cart_page.check_total_sum(to_be_result)
+    assert f'Total: ${to_be_result}' == as_is_result
