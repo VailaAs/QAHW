@@ -16,5 +16,11 @@ def test_form(driver):
     main_page.company('SkyPro')
     main_page.zipcode('')
     main_page.submit()
-    main_page.find_green_elements(9)
-    main_page.find_red_elements(1)
+
+    to_be_green_elements = 9
+    as_is_green_elements = main_page.find_green_elements(to_be_green_elements)
+    assert as_is_green_elements == to_be_green_elements
+
+    to_be_red_elements = 1
+    as_is_red_elements = main_page.find_red_elements(to_be_red_elements)
+    assert as_is_red_elements == to_be_red_elements

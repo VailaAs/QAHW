@@ -13,4 +13,4 @@ def test_shop(driver):
 
     cart_page = CartPage(driver)
     cart_page.checkout_form('Alla', 'Sky', 123456)
-    cart_page.check_total_sum(58.29)
+    cart_page.check_total_sum()

@@ -55,11 +55,9 @@ class MainPage:
     def find_green_elements(self, to_be_elements):
         green = self.driver.find_elements(
             By.CSS_SELECTOR, '[class="alert py-2 alert-success"]')
-        as_is_elements = len(green)
-        assert as_is_elements == to_be_elements
+        return len(green)
 
     def find_red_elements(self, to_be_elements):
         red = self.driver.find_elements(
             By.CSS_SELECTOR, '[class="alert py-2 alert-danger"]')
-        as_is_elements = len(red)
-        assert as_is_elements == to_be_elements
+        return len(red)
