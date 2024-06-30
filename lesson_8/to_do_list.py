@@ -18,11 +18,11 @@ class ToDoList:
         return response
 
     def task_edit(self, task_id: int, new_task_name:str):
-        response = requests.patch(f"{self.url}/{task_id}", json={"title": new_task_name})
+        response = requests.patch(f"{self.url}{task_id}", json={"title": new_task_name})
         return response
 
     def task_delete(self, task_id: int):
-        response = requests.delete(f"{self.url}/{task_id}")
+        response = requests.delete(f"{self.url}{task_id}")
         return response
 
     def get_task_list(self):
@@ -30,13 +30,13 @@ class ToDoList:
         return response
 
     def get_task(self, task_id):
-        response = requests.get(f"{self.url}/{task_id}")
+        response = requests.get(f"{self.url}{task_id}")
         return response
 
     def task_mark_completed(self, task_id):
-        response = requests.patch(f"{self.url}/{task_id}", json={"completed":True})
+        response = requests.patch(f"{self.url}{task_id}", json={"completed":True})
         return response
 
     def task_mark_uncompleted(self, task_id):
-        response = requests.patch(f"{self.url}/{task_id}", json={"completed":False})
+        response = requests.patch(f"{self.url}{task_id}", json={"completed":False})
         return response

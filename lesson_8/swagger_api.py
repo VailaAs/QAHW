@@ -31,13 +31,13 @@ class SwaggerApi:
 
     def company_delete(self, token, id):
         my_headers = {'x-client-token': token}
-        response = requests.get(f"{self.url}/company/delete/{id}",
+        response = requests.get(f"{self.url}company/delete/{id}",
                                 headers=my_headers)
         return response.status_code
 
     def get_all_employees(self, company_id):
         my_params = {"company": company_id}
-        response = requests.get(f"{self.url}/employee", params=my_params)
+        response = requests.get(f"{self.url}employee", params=my_params)
         return response
 
     def employee_body(self, id, first_name, last_name, middle_name, company_id, email, avatar_url, phone, birthdate):
@@ -57,17 +57,17 @@ class SwaggerApi:
 
     def employee_create(self, token, body):
         my_headers = {'x-client-token': token}
-        response = requests.post(f"{self.url}/employee",
+        response = requests.post(f"{self.url}employee",
                                  headers=my_headers, json=body)
         employee_id = response.json()['id']
         return employee_id
 
     def employee_get_by_id(self, employee_id):
-        response = requests.get(f"{self.url}/employee/{employee_id}")
+        response = requests.get(f"{self.url}employee/{employee_id}")
         return response
 
     def employee_patch(self, employee_id, token, body):
         my_headers = {'x-client-token': token}
-        response = requests.patch(f"{self.url}/employee/{employee_id}",
+        response = requests.patch(f"{self.url}employee/{employee_id}",
                                   headers=my_headers, json=body)
         return response
