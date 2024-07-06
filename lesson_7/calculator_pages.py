@@ -23,7 +23,6 @@ class MainPage:
     def calculation_waiter(self, to_be_result, delay):
         WebDriverWait(self.driver, delay+1).until(
             EC.invisibility_of_element_located((By.ID, 'spinner')))
-        as_is_result = self.driver.find_element(
-            By.XPATH, '//*[@id="calculator"]/div[1]/div').text
-        as_is_result = eval(as_is_result)
-        assert as_is_result == to_be_result
+        screen_element = self.driver.find_element(By.CSS_SELECTOR, '[class="screen"]')
+        as_is_res = int(screen_element.text)
+        return as_is_res
